@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML classification</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://img.freepik.com/premium-vector/futuristic-diabetes-treatment-with-insulin-concept-with-glowing-low-polygonal-vial-syringe-with-medicament-dark-blue-background-modern-wireframe_67515-1050.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+      background-size: cover;
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+
+    .login {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.8);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0 0 20px;
+      color: #efed40;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      border: none;
+      border-bottom: 1px solid #fff;
+      background: transparent;
+      outline: none;
+      height: 40px;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background: #efed40;
+      border: none;
+      outline: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .result-text {
+      color: #efed40;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 28px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Diabetes Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
+      <input type="text" name="Glucose" placeholder="Glucose" required="required" />
+      <input type="text" name="BloodPressure" placeholder="Blood Pressure" required="required" />
+      <input type="text" name="SkinThickness" placeholder="Skin Thickness" required="required" />
+      <input type="text" name="Insulin" placeholder="Insulin" required="required" />
+      <input type="text" name="BMI" placeholder="BMI" required="required" />
+      <input type="text" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required="required" />
+      <input type="text" name="Age" placeholder="Age" required="required" />
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <!-- Result text display -->
+    <div class="result-text">
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
